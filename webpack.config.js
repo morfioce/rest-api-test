@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
+  mode: 'development',
   entry: ["babel-polyfill", "./front/index.js", "./front/index.scss"],
   output: {
     path: path.join(__dirname, ".public/base"),
@@ -10,7 +11,7 @@ module.exports = {
     filename: "index.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
