@@ -5,10 +5,18 @@ import Chart from './components/Chart';
 import DataTable from './components/DataTable';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { stocks: [] };
+    }
+
     componentDidMount() {
         fetch('http://localhost:3000/stocks')
             .then(response => response.json())
-            .then(data => console.log(JSON.stringify(data)))
+            .then(stocks => {
+                this.setState({ stocks: stocks.slice(stocks.length - 20) });
+                console.log(stocks);
+            })
             .catch(e => console.error(e));
     }
 
@@ -17,7 +25,7 @@ class App extends React.Component {
             <div>
                 <h1>Simple dashboard with Node, React and D3?</h1>
                 <Chart />
-                <DataTable />
+                <DataTable stocks={this.state.stocks} />
             </div>
         )
     };
