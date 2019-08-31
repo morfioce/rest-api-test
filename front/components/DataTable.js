@@ -1,4 +1,5 @@
 import React from "react";
+import DataPoint from "./DatatPoint";
 
 class DataTable extends React.Component {
   renderStocks(stocks) {
@@ -7,15 +8,19 @@ class DataTable extends React.Component {
         <table>
           <thead>
             <tr>
-              <td>Last 20 stock values</td>
+              <td>Last 20 stock prices</td>
             </tr>
           </thead>
           <tbody>
-            <tr style={{width:'500', display:'flex', flexWrap:'wrap'}}>
+            <tr style={{ width: "500", display: "flex", flexWrap: "wrap" }}>
               {stocks.map(stock => {
                 return (
-                  <td>
-                    <input type="text" value={stock.stocks} />
+                  <td key={stock.index}>
+                    <DataPoint
+                      index={stock.index}
+                      value={stock.value}
+                      onChange={this.props.onChange}
+                    />
                   </td>
                 );
               })}

@@ -8,7 +8,7 @@ const process = stocks => {
   return stocks.slice(stocks.length - 20).map((stock, i) => {
     return {
       index: i,
-      stocks: parseFloat(stock.stocks)
+      value: parseFloat(stock.stocks)
     };
   });
 };
@@ -17,6 +17,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { stocks: [] };
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(data, key) {
+    this.setState(prevState => {
+      return {
+        stocks: prevState.stocks.map(stock => {
+          if (stock.index === key) {
+            return {
+              index: key,
+              value: data
+            };
+          }
+          return stock;
+        })
+      };
+    });
   }
 
   componentDidMount() {
@@ -32,9 +49,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Simple dashboard with Node, React and D3?</h1>
-        <Chart width="1000" height="500" stocks={this.state.stocks} />
-        <DataTable stocks={this.state.stocks} />
+        <Chart
+          width="950"
+          height="500"
+          margin={{ top: 25, right: 25, bottom: 30, left: 50 }}
+          stocks={this.state.stocks}
+        />
+        <DataTable stocks={this.state.stocks} onChange={this.onChange} />
       </div>
     );
   }
