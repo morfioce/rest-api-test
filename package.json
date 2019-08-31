@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Julien-Decoen/rest-api-test#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "d3": "^5.11.0",
     "event-stream": "^4.0.1",
     "express": "^4.16.4",
     "har-validator": "^5.1.3",
