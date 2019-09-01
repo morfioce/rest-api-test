@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import reactDom from "react-dom";
 
 import Chart from "./components/Chart";
@@ -13,52 +13,44 @@ const process = stocks => {
   });
 };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { stocks: [] };
-    this.onChange = this.onChange.bind(this);
+const App = () => {
+  const [stocks, setStocks] = useState([]);
+
+  const onChange = (data, key) => {
+    setStocks(stocks.map(stock => {
+      if (stock.index === key) {
+        return {
+            index: key,
+            value: data
+        };
+        }
+        return stock;
+      })
+    )
   }
 
-  onChange(data, key) {
-    this.setState(prevState => {
-      return {
-        stocks: prevState.stocks.map(stock => {
-          if (stock.index === key) {
-            return {
-              index: key,
-              value: data
-            };
-          }
-          return stock;
-        })
-      };
-    });
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     fetch("http://localhost:3000/stocks", { cache: "no-cache" })
       .then(response => response.json())
       .then(stocks => {
-        this.setState({ stocks: process(stocks) });
-        console.log(process(stocks));
+        setStocks(process(stocks));
       })
       .catch(e => console.error(e));
-  }
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <Chart
-          width="950"
-          height="500"
-          margin={{ top: 25, right: 25, bottom: 30, left: 50 }}
-          stocks={this.state.stocks}
-        />
-        <DataTable stocks={this.state.stocks} onChange={this.onChange} />
-      </div>
-    );
-  }
+  
+  return (
+    <div>
+      <Chart
+        width="950"
+        height="500"
+        margin={{ top: 25, right: 25, bottom: 30, left: 50 }}
+        stocks={stocks}
+      />
+      <DataTable stocks={stocks} onChange={onChange} />
+    </div>
+  );
+ 
 }
 
 reactDom.render(<App />, document.querySelector("#react-app"));

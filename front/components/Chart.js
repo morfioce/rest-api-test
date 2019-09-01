@@ -79,7 +79,7 @@ class Chart extends React.Component {
   }
 
   UNSAFE_componentWillUpdate(nextProps) {
-    const chart = document.getElementById("chart");
+    const chart = document.querySelector("#chart-group");
     while (chart.hasChildNodes()) {
       chart.removeChild(chart.lastChild);
     }
@@ -100,7 +100,7 @@ class Chart extends React.Component {
 
     console.log('stocks: ', stocks)
     return (
-      <div>
+      <div id="chart">
         <svg
           width={width}
           height={height}
@@ -112,7 +112,7 @@ class Chart extends React.Component {
           }}
         >
           <g
-            id="chart"
+            id="chart-group"
             transform={`translate(${marginLeft}, ${marginTop})`}
             ref={el => (this.svg = d3.select(el))}
           ></g>
