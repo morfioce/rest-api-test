@@ -1,15 +1,7 @@
 import React from "react";
 import * as d3 from "d3";
 
-const max = stocks => {
-  let max = stocks[0].value;
-  for (let stock of stocks) {
-    if (stock.value > max) {
-      max = stock.value;
-    }
-  }
-  return parseInt(max) + 1;
-};
+import { max } from '../utils/utils';
 
 class Chart extends React.Component {
   constructor(props) {
@@ -50,13 +42,11 @@ class Chart extends React.Component {
         return this.y()(d.value);
       });
     // Add the valueline path.
-    setTimeout(() => {
       this.svg
         .append("path")
         .datum(stocks)
         .attr("class", "line")
         .attr("d", valueline);
-    }, 0);
   }
 
   drawXAxis() {
@@ -98,7 +88,6 @@ class Chart extends React.Component {
       }
     } = this.props;
 
-    console.log('stocks: ', stocks)
     return (
       <div id="chart">
         <svg
