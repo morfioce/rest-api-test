@@ -7,7 +7,7 @@ import DataTable from "./components/DataTable";
 
 const App = () => {
   const [stocks, setStocks] = useState([]);
-  const [source, setSource] = useState('server');
+  const [source, setSource] = useState("");
   const [error, setError] = useState(null);
 
   const onChange = (data, key) => {
@@ -26,6 +26,7 @@ const App = () => {
 
   useEffect(async () => {
     const [response, source] = await api();
+    console.log("response ", response);
     if (typeof response === "string") {
       setError(response);
     } else {
@@ -35,16 +36,14 @@ const App = () => {
   }, []);
 
   return (
-    <div id="container">
+    <div className="container">
       {error ? (
-        <div id="error">
-          <h1>THE SERVICE IS TEMPORARILY UNAVAILABLE</h1>
-        </div>
+        <h1>THE SERVICE IS TEMPORARILY UNAVAILABLE</h1>
       ) : (
         <Fragment>
           <p>Data loaded from: {source}</p>
           <Chart
-            width="950"
+            width="1000"
             height="500"
             margin={{ top: 25, right: 25, bottom: 30, left: 50 }}
             stocks={stocks}
