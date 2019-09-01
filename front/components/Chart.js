@@ -1,6 +1,7 @@
 import React from "react";
-import * as d3 from "d3";
+import PropTypes from 'prop-types';
 
+import * as d3 from "d3";
 import { max } from '../utils/utils';
 
 class Chart extends React.Component {
@@ -105,13 +106,24 @@ class Chart extends React.Component {
             transform={`translate(${marginLeft}, ${marginTop})`}
             ref={el => (this.svg = d3.select(el))}
           ></g>
-          {this.drawXAxis(stocks)}
-          {this.drawYAxis(stocks)}
-          {this.drawLinePath(stocks)}
+          {stocks && this.drawXAxis(stocks)}
+          {stocks && this.drawYAxis(stocks)}
+          {stocks && this.drawLinePath(stocks)}
         </svg>
       </div>
     );
   }
 }
+
+Chart.defaultProps = {
+  width: '1000',
+  height: '500',
+  margin: {
+    top: '25',
+    right: '25',
+    bottom: '30',
+    left: '50'
+  }
+};
 
 export default Chart;

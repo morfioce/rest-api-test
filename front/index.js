@@ -26,7 +26,6 @@ const App = () => {
 
   useEffect(async () => {
     const [response, source] = await api();
-    console.log("response ", response);
     if (typeof response === "string") {
       setError(response);
     } else {
