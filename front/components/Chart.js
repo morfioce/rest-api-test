@@ -8,33 +8,35 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.drawLinePath = this.drawLinePath.bind(this);
+    const {
+      top: marginTop,
+      right: marginRight,
+      bottom: marginBottom,
+      left: marginLeft
+    } = this.props.margin
+    this.innerWidth = this.props.width - marginLeft - marginRight;
+    this.innerHeight = this.props.height - marginTop - marginBottom;
   }
 
   x() {
-    var margin = { top: 25, right: 25, bottom: 30, left: 50 },
-      width = this.props.width - margin.left - margin.right;
-
     return d3
       .scaleLinear()
       .domain([0, 20])
-      .range([0, width]);
+      .range([0, this.innerWidth]);
   }
 
   y() {
-    var margin = { top: 25, right: 25, bottom: 30, left: 50 },
-      height = this.props.height - margin.top - margin.bottom;
-
     return d3
       .scaleLinear()
       .domain([0, max(this.props.stocks)])
-      .range([height, 0]);
+      .range([this.innerHeight, 0]);
   }
 
-  drawLinePath(stocks) {
+  drawLinePath = (stocks) => {
     if (!this.svg) return;
 
     // define the line
-    var valueline = d3
+    const valueline = d3
       .line()
       .x(d => {
         return this.x()(d.index);
@@ -52,13 +54,10 @@ class Chart extends React.Component {
 
   drawXAxis() {
     if (!this.svg) return;
-
-    var margin = { top: 25, right: 25, bottom: 30, left: 50 };
-    var height = this.props.height - margin.top - margin.bottom;
     // Add the X Axis
     this.svg
       .append("g")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + this.innerHeight + ")")
       .call(d3.axisBottom(this.x()));
   }
 
