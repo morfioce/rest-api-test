@@ -2,6 +2,10 @@ import React from "react";
 import DataPoint from "./DatatPoint";
 
 const DataTable = ({ stocks, onChange }) => {
+  if (!stocks.length) {
+    return <h1>Loading ...</h1>
+  }
+
   return (
     <div id="data-table">
       <table>
@@ -28,6 +32,10 @@ const DataTable = ({ stocks, onChange }) => {
       </table>
     </div>
   );
+};
+
+DataTable.defaultProps = {
+  stocks: []
 };
 
 export default DataTable;

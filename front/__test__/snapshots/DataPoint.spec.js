@@ -3,8 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import pretty from "pretty";
 
-import DatatPoint from "../components/DatatPoint";
-import stocks from "./stocks.json";
+import DatatPoint from "../../components/DatatPoint";
 
 let container = null;
 beforeEach(() => {
@@ -26,5 +25,12 @@ it("renders DataPoint with or without props", () => {
   });
   expect(pretty(container.innerHTML)).toMatchInlineSnapshot(
     `"<input type=\\"text\\" value=\\"\\">"`
+  );
+
+  act(() => {
+    render(<DatatPoint key="1" value="12.34" />, container);
+  });
+  expect(pretty(container.innerHTML)).toMatchInlineSnapshot(
+    `"<input type=\\"text\\" value=\\"12.34\\">"`
   );
 });

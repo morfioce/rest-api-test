@@ -3,8 +3,8 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import pretty from "pretty";
 
-import Chart from "../components/Chart";
-import stocks from "./stocks.json";
+import Chart from "../../components/Chart";
+import stocks from "../stocks.json";
 
 let container = null;
 beforeEach(() => {
@@ -59,85 +59,85 @@ it("renders Chart with or without props", () => {
   expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
     "<div id=\\"chart\\"><svg width=\\"1500\\" height=\\"750\\" style=\\"margin: 30px 30px 35px 75px;\\">
         <g id=\\"chart-group\\" transform=\\"translate(75, 30)\\">
-          <g transform=\\"translate(0,695)\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
-            <path class=\\"domain\\" stroke=\\"currentColor\\" d=\\"M0.5,6V0.5H1425.5V6\\"></path>
+          <g transform=\\"translate(0,445)\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
+            <path class=\\"domain\\" stroke=\\"currentColor\\" d=\\"M0.5,6V0.5H925.5V6\\"></path>
             <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">0</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(143,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(93,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">2</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(285.5,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(185.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">4</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(428,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(278,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">6</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(570.5,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(370.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">8</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(713,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(463,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">10</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(855.5,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(555.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">12</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(997.9999999999999,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(648,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">14</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(1140.5,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(740.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">16</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(1283,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(833,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">18</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(1425.5,0)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(925.5,0)\\">
               <line stroke=\\"currentColor\\" y2=\\"6\\"></line><text fill=\\"currentColor\\" y=\\"9\\" dy=\\"0.71em\\">20</text>
             </g>
           </g>
           <g fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"end\\">
-            <path class=\\"domain\\" stroke=\\"currentColor\\" d=\\"M-6,695.5H0.5V0.5H-6\\"></path>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,695.5)\\">
+            <path class=\\"domain\\" stroke=\\"currentColor\\" d=\\"M-6,445.5H0.5V0.5H-6\\"></path>
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,445.5)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">0</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,639.9)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,409.9)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">2</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,584.3)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,374.3)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">4</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,528.7)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,338.7)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">6</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,473.1)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,303.1)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">8</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,417.5)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,267.5)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">10</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,361.90000000000003)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,231.9)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">12</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,306.29999999999995)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,196.29999999999998)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">14</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,250.7)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,160.7)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">16</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,195.10000000000002)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,125.10000000000002)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">18</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,139.5)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,89.5)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">20</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,83.89999999999998)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,53.89999999999998)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">22</text>
             </g>
-            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,28.300000000000068)\\">
+            <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,18.30000000000001)\\">
               <line stroke=\\"currentColor\\" x2=\\"-6\\"></line><text fill=\\"currentColor\\" x=\\"-9\\" dy=\\"0.32em\\">24</text>
             </g>
           </g>
-          <path class=\\"line\\" d=\\"M0,25.992999999999938L71.25,132.3836L142.5,198.909L213.75,159.68319999999994L285,50.54039999999998L356.25,29.746000000000095L427.5,84.84559999999999L498.74999999999994,151.0652L570,157.37580000000003L641.25,284.3662L712.5,178.89300000000003L783.7500000000001,262.71L855,325.17659999999995L926.25,224.207L997.4999999999999,264.29459999999995L1068.75,264.1L1140,106.91880000000003L1211.25,318.97720000000004L1282.5,347.1942L1353.75,149.67520000000002\\"></path>
+          <path class=\\"line\\" d=\\"M0,16.642999999999972L46.25,84.7636L92.5,127.35899999999998L138.75,102.2432L185,32.36040000000003L231.25,19.04600000000005L277.5,54.32560000000001L323.75,96.72519999999997L370,100.76580000000001L416.25,182.07619999999997L462.5,114.543L508.75000000000006,168.20999999999998L555,208.20659999999998L601.25,143.55700000000002L647.5,169.22459999999995L693.75,169.10000000000002L740,68.4588L786.25,204.2372L832.5,222.3042L878.75,95.83519999999999\\"></path>
         </g>
       </svg></div>"
   `);
