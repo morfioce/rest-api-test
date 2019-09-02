@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types';
 
 import * as d3 from "d3";
-import { max } from '../utils/utils';
+import { max } from "../utils/utils";
 
 class Chart extends React.Component {
   constructor(props) {
@@ -13,9 +12,18 @@ class Chart extends React.Component {
       right: marginRight,
       bottom: marginBottom,
       left: marginLeft
-    } = this.props.margin
+    } = this.props.margin;
     this.innerWidth = this.props.width - marginLeft - marginRight;
     this.innerHeight = this.props.height - marginTop - marginBottom;
+    // define the line
+    this.valueline = d3
+      .line()
+      .x(d => {
+        return this.x()(d.index);
+      })
+      .y(d => {
+        return this.y()(d.value);
+      });
   }
 
   x() {
@@ -32,27 +40,17 @@ class Chart extends React.Component {
       .range([this.innerHeight, 0]);
   }
 
-  drawLinePath = (stocks) => {
+  drawLinePath = stocks => {
     if (!this.svg) return;
-
-    // define the line
-    const valueline = d3
-      .line()
-      .x(d => {
-        return this.x()(d.index);
-      })
-      .y(d => {
-        return this.y()(d.value);
-      });
     // Add the valueline path.
-      this.svg
-        .append("path")
-        .datum(stocks)
-        .attr("class", "line")
-        .attr("d", valueline);
-  }
+    this.svg
+      .append("path")
+      .datum(stocks)
+      .attr("class", "line")
+      .attr("d", this.valueline);
+  };
 
-  drawXAxis() {
+  drawXaxis() {
     if (!this.svg) return;
     // Add the X Axis
     this.svg
@@ -61,14 +59,15 @@ class Chart extends React.Component {
       .call(d3.axisBottom(this.x()));
   }
 
-  drawYAxis() {
+  drawYaxis() {
     if (!this.svg) return;
-
     // Add the Y Axis
     this.svg.append("g").call(d3.axisLeft(this.y()));
   }
 
   UNSAFE_componentWillUpdate(nextProps) {
+    // Remove all elements withing the d3 line chart
+    // This is because d3 update methods enter/update/remove are not decalarative
     const chart = document.querySelector("#chart-group");
     while (chart.hasChildNodes()) {
       chart.removeChild(chart.lastChild);
@@ -105,8 +104,8 @@ class Chart extends React.Component {
             transform={`translate(${marginLeft}, ${marginTop})`}
             ref={el => (this.svg = d3.select(el))}
           ></g>
-          {stocks && this.drawXAxis(stocks)}
-          {stocks && this.drawYAxis(stocks)}
+          {stocks && this.drawXaxis(stocks)}
+          {stocks && this.drawYaxis(stocks)}
           {stocks && this.drawLinePath(stocks)}
         </svg>
       </div>
@@ -115,13 +114,13 @@ class Chart extends React.Component {
 }
 
 Chart.defaultProps = {
-  width: '1000',
-  height: '500',
+  width: "1000",
+  height: "500",
   margin: {
-    top: '25',
-    right: '25',
-    bottom: '30',
-    left: '50'
+    top: "25",
+    right: "25",
+    bottom: "30",
+    left: "50"
   }
 };
 
