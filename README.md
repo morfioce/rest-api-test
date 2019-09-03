@@ -6,27 +6,31 @@ Install packages
 npm i
 ```
 
-Start Api
+Start React app and Api
 
 ```bash
-npm run start-api
+npm start & npm run start-api
 ```
 
-Start Api which response with delay (10s)
+Start Ract app and Api which response with delay (n milliseconds)
 
 ```bash
-npm run delay-api
+npm start & npm run start-api -- --delay <n>
 ```
 
-Start Server
-
+Run tests
 ```bash
-# Dev
-npm run watch
-npm run dev
+npm test
+```
 
-# Prod
-npm run start
+Run snapshot tests
+```bash
+npm test snapshot
+```
+
+Run unit tests
+```bash
+npm test unit
 ```
 
 ## Api Routes

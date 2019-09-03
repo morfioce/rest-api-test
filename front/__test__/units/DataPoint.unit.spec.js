@@ -36,5 +36,5 @@ it("tests onChange event of DataPoint", () => {
     fireEvent.change(input, { target: { value: 'clf' } });
   });
 
-  expect(onChange).toHaveBeenCalledTimes(3);
+  expect(onChange).toHaveBeenCalledTimes(4);
 });

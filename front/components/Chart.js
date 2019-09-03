@@ -6,7 +6,6 @@ import { max } from "../utils/utils";
 class Chart extends React.Component {
   constructor(props) {
     super(props);
-    this.drawLinePath = this.drawLinePath.bind(this);
     const {
       top: marginTop,
       right: marginRight,
