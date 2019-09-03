@@ -9,21 +9,7 @@ const App = () => {
   const [source, setSource] = useState("");
   const [error, setError] = useState(null);
 
-  const onChange = (data, key) => {
-    setStocks(
-      stocks.map(stock => {
-        if (stock.index === key) {
-          return {
-            index: key,
-            value: data
-          };
-        }
-        return stock;
-      })
-    );
-  };
-
-  useEffect(async () => {
+  const fetchData = async () => {
     const [response, source] = await api();
     if (typeof response === "string") {
       setError(response);
@@ -31,6 +17,24 @@ const App = () => {
       setStocks(response);
     }
     setSource(source);
+  };
+
+  const onChange = (data, key) => {
+    setStocks(
+      stocks.map(stock => {
+        if (stock.index === key) {
+          return {
+            index: key,
+            stocks: data
+          };
+        }
+        return stock;
+      })
+    );
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (

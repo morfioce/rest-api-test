@@ -16,12 +16,12 @@ const DataTable = ({ stocks, onChange }) => {
         </thead>
         <tbody>
           <tr style={{ width: "500", display: "flex", flexWrap: "wrap" }}>
-            {stocks && stocks.map(stock => {
+            {stocks.map(stock => {
               return (
                 <td key={stock.index}>
                   <DataPoint
                     index={stock.index}
-                    value={stock.value}
+                    value={stock.stocks}
                     onChange={onChange}
                   />
                 </td>

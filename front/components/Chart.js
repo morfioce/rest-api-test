@@ -22,7 +22,7 @@ class Chart extends React.Component {
         return this.x()(d.index);
       })
       .y(d => {
-        return this.y()(d.value);
+        return this.y()(d.stocks);
       });
   }
 
@@ -36,7 +36,7 @@ class Chart extends React.Component {
   y() {
     return d3
       .scaleLinear()
-      .domain([0, max(this.props.stocks)])
+      .domain([0, Math.ceil(max(this.props.stocks))])
       .range([this.innerHeight, 0]);
   }
 

@@ -38,7 +38,7 @@ it("renders with or without a name", () => {
   act(() => {
     render(
       <DataTable
-        stocks={[{ index: 0, value: 12.9 }, { index: 1, value: 5.89 }]}
+        stocks={[{ index: 0, stocks: 12.9 }, { index: 1, stocks: 5.89 }]}
       />,
       container
     );
